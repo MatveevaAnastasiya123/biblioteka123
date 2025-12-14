@@ -2,6 +2,7 @@
 #include <iostream>
 #include <fstream>
 #include <string>
+#include <Windows.h>
 
 using namespace std;
 
@@ -14,7 +15,7 @@ namespace User
 	public:
 		People(int ID);
 
-		void ShowBooksCstslog();
+		void ShowBooksCatalog();
 		void ShowMyBooks();
 	};
 }

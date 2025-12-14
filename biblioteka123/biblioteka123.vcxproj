@@ -140,6 +140,10 @@
     <ClInclude Include="Header.h" />
     <ClInclude Include="Header1.h" />
   </ItemGroup>
+  <ItemGroup>
+    <Text Include="books.txt" />
+    <Text Include="books_to_users.txt" />
+  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>
