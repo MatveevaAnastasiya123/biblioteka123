@@ -1,15 +1,15 @@
 #include "biblioteka.M.h"
 
 void Librarian::addUser() {
-    cout << "=====ÄÎÁÀÂËÅÍÈÅ ÏÎËÜÇÎÂÀÒÅËß=====" << endl;
+    cout << "=====Ã„ÃŽÃÃ€Ã‚Ã‹Ã…ÃÃˆÃ… ÃÃŽÃ‹ÃœÃ‡ÃŽÃ‚Ã€Ã’Ã…Ã‹ÃŸ=====" << endl;
     string fio, birthday, tel, adress;
-    cout << "Ââåäèòå ÔÈÎ:";
+    cout << "Ã‚Ã¢Ã¥Ã¤Ã¨Ã²Ã¥ Ã”ÃˆÃŽ:";
     getline(cin, fio);
-    cout << "Ââåäèòå äàòó ðîæäåíèÿ:";
+    cout << "Ã‚Ã¢Ã¥Ã¤Ã¨Ã²Ã¥ Ã¤Ã Ã²Ã³ Ã°Ã®Ã¦Ã¤Ã¥Ã­Ã¨Ã¿:";
     getline(cin, birthday);
-    cout << "Ââåäèòå òåëåôîí:";
+    cout << "Ã‚Ã¢Ã¥Ã¤Ã¨Ã²Ã¥ Ã²Ã¥Ã«Ã¥Ã´Ã®Ã­:";
     getline(cin, tel);
-    cout << "Ââåäèòå àäðåñ:";
+    cout << "Ã‚Ã¢Ã¥Ã¤Ã¨Ã²Ã¥ Ã Ã¤Ã°Ã¥Ã±:";
     getline(cin, adress);
 
     ofstream file("users.txt", ios::app);
@@ -20,23 +20,23 @@ void Librarian::addUser() {
         file << adress << endl;
         file << "-------------" << endl;
         file.close();
-        cout << "Íîâûé ïîëüçîâàòåëü " << fio << " äîáàâëåí." << endl;
+        cout << "ÃÃ®Ã¢Ã»Ã© Ã¯Ã®Ã«Ã¼Ã§Ã®Ã¢Ã Ã²Ã¥Ã«Ã¼ " << fio << " Ã¤Ã®Ã¡Ã Ã¢Ã«Ã¥Ã­." << endl;
     }
     else {
-        cout << "Ïðîèçîøëà îøèáêà ïðè ðåãèñòðàöèè ïîëüçîâàòåëÿ.";
+        cout << "ÃÃ°Ã®Ã¨Ã§Ã®Ã¸Ã«Ã  Ã®Ã¸Ã¨Ã¡ÃªÃ  Ã¯Ã°Ã¨ Ã°Ã¥Ã£Ã¨Ã±Ã²Ã°Ã Ã¶Ã¨Ã¨ Ã¯Ã®Ã«Ã¼Ã§Ã®Ã¢Ã Ã²Ã¥Ã«Ã¿.";
         return;
     }
 }
 
 void Librarian::delUser() {
-    cout << "=====ÓÄÀËÅÍÈÅ ÏÎËÜÇÎÂÀÒÅËß=====" << endl;
+    cout << "=====Ã“Ã„Ã€Ã‹Ã…ÃÃˆÃ… ÃÃŽÃ‹ÃœÃ‡ÃŽÃ‚Ã€Ã’Ã…Ã‹ÃŸ=====" << endl;
     string FIO_del;
-    cout << "Ââåäèòå ÔÈÎ ïîëüçîâàòåëÿ, êîòîðîãî õîòèòå óäàëèòü: ";
+    cout << "Ã‚Ã¢Ã¥Ã¤Ã¨Ã²Ã¥ Ã”ÃˆÃŽ Ã¯Ã®Ã«Ã¼Ã§Ã®Ã¢Ã Ã²Ã¥Ã«Ã¿, ÃªÃ®Ã²Ã®Ã°Ã®Ã£Ã® ÃµÃ®Ã²Ã¨Ã²Ã¥ Ã³Ã¤Ã Ã«Ã¨Ã²Ã¼: ";
     getline(cin, FIO_del);
 
     ifstream file("users.txt");
     if (!file) {
-        cout << "Îøèáêà îòêðûòèÿ ôàéëà." << endl;
+        cout << "ÃŽÃ¸Ã¨Ã¡ÃªÃ  Ã®Ã²ÃªÃ°Ã»Ã²Ã¨Ã¿ Ã´Ã Ã©Ã«Ã ." << endl;
         return;
     }
 
@@ -66,26 +66,26 @@ void Librarian::delUser() {
     if (found) {
         remove("users.txt");
         rename("temp.txt", "users.txt");
-        cout << "Ïîëüçîâàòåëü óäàëåí. " << endl;
+        cout << "ÃÃ®Ã«Ã¼Ã§Ã®Ã¢Ã Ã²Ã¥Ã«Ã¼ Ã³Ã¤Ã Ã«Ã¥Ã­. " << endl;
     }
     else {
         remove("temp.txt");
-        cout << "Íå íàéäåí!" << endl;
+        cout << "ÃÃ¥ Ã­Ã Ã©Ã¤Ã¥Ã­!" << endl;
     }
 }
 
 void Librarian::addBook() {
-    cout << "=====ÄÎÁÀÂËÅÍÈÅ ÊÍÈÃÈ=====" << endl;
+    cout << "=====Ã„ÃŽÃÃ€Ã‚Ã‹Ã…ÃÃˆÃ… ÃŠÃÃˆÃƒÃˆ=====" << endl;
     string author, title, edition, annatation, year;
-    cout << "Ââåäèòå íàçâàíèå êíèãè:";
+    cout << "Ã‚Ã¢Ã¥Ã¤Ã¨Ã²Ã¥ Ã­Ã Ã§Ã¢Ã Ã­Ã¨Ã¥ ÃªÃ­Ã¨Ã£Ã¨:";
     getline(cin, title);
-    cout << "Ââåäèòå ÔÈÎ àâòîðà: ";
+    cout << "Ã‚Ã¢Ã¥Ã¤Ã¨Ã²Ã¥ Ã”ÃˆÃŽ Ã Ã¢Ã²Ã®Ã°Ã : ";
     getline(cin, author);
-    cout << "Ââåäèòå ãîä èçäàíèÿ: ";
+    cout << "Ã‚Ã¢Ã¥Ã¤Ã¨Ã²Ã¥ Ã£Ã®Ã¤ Ã¨Ã§Ã¤Ã Ã­Ã¨Ã¿: ";
     getline(cin, year);
-    cout << "Ââåäèò íàçâàíèå èçäàíèÿ: ";
+    cout << "Ã‚Ã¢Ã¥Ã¤Ã¨Ã² Ã­Ã Ã§Ã¢Ã Ã­Ã¨Ã¥ Ã¨Ã§Ã¤Ã Ã­Ã¨Ã¿: ";
     getline(cin, edition);
-    cout << "Ââåäèòå àíîòàöèþ ê êíèãå: ";
+    cout << "Ã‚Ã¢Ã¥Ã¤Ã¨Ã²Ã¥ Ã Ã­Ã®Ã²Ã Ã¶Ã¨Ã¾ Ãª ÃªÃ­Ã¨Ã£Ã¥: ";
     getline(cin, annatation);
 
     ofstream file("books.txt", ios::app);
@@ -97,18 +97,18 @@ void Librarian::addBook() {
         file << annatation << endl;
         file << "---------------------" << endl;
         file.close();
-        cout << "Êíèãà " << title << " äîáàâëåíà â áèáëèîòåêó." << endl;
+        cout << "ÃŠÃ­Ã¨Ã£Ã  " << title << " Ã¤Ã®Ã¡Ã Ã¢Ã«Ã¥Ã­Ã  Ã¢ Ã¡Ã¨Ã¡Ã«Ã¨Ã®Ã²Ã¥ÃªÃ³." << endl;
     }
 }
 
 void Librarian::delBook() {
-    cout << "=====ÓÄÀËÅÍÈÅ ÊÍÈÃÈ=====" << endl;
+    cout << "=====Ã“Ã„Ã€Ã‹Ã…ÃÃˆÃ… ÃŠÃÃˆÃƒÃˆ=====" << endl;
     string del_title;
-    cout << "Ââåäèòå íàçâàíèå êíèãè, êîòîðóþ õîòèòå óäàëèòü: ";
+    cout << "Ã‚Ã¢Ã¥Ã¤Ã¨Ã²Ã¥ Ã­Ã Ã§Ã¢Ã Ã­Ã¨Ã¥ ÃªÃ­Ã¨Ã£Ã¨, ÃªÃ®Ã²Ã®Ã°Ã³Ã¾ ÃµÃ®Ã²Ã¨Ã²Ã¥ Ã³Ã¤Ã Ã«Ã¨Ã²Ã¼: ";
     getline(cin, del_title);
     ifstream file("books.txt");
     if (!file) {
-        cout << "Îøèáêà çàïèñè êíèãè â ôàéë.";
+        cout << "ÃŽÃ¸Ã¨Ã¡ÃªÃ  Ã§Ã Ã¯Ã¨Ã±Ã¨ ÃªÃ­Ã¨Ã£Ã¨ Ã¢ Ã´Ã Ã©Ã«.";
         return;
     }
     ofstream temp("temp.txt");
@@ -133,25 +133,27 @@ void Librarian::delBook() {
     if (found) {
         remove("books.txt");
         rename("temp.txt", "books.txt");
-        cout << "Êíèãà " << del_title << " óäàëåíà." << endl;
+        cout << "ÃŠÃ­Ã¨Ã£Ã  " << del_title << " Ã³Ã¤Ã Ã«Ã¥Ã­Ã ." << endl;
     }
     else {
         remove("temp.txt");
-        cout << "Êíèãà " << del_title << " íå íàéäåíà." << endl;
+        cout << "ÃŠÃ­Ã¨Ã£Ã  " << del_title << " Ã­Ã¥ Ã­Ã Ã©Ã¤Ã¥Ã­Ã ." << endl;
     }
 }
 
 void Librarian::giveBook() {
-    cout << "=====ÂÛÄÀ×À ÊÍÈÃÈ=====" << endl;
-    string user_FIO, book_title;
-    cout << "Ââåäèòå ÔÈÎ: ";
+    cout << "=====Ð’Ð«Ð”ÐÐ§Ð ÐšÐÐ˜Ð“Ð˜=====" << endl;
+    string user_FIO, book_title, date;
+    cout << "Ð’Ð²ÐµÐ´Ð¸Ñ‚Ðµ Ð¤Ð˜Ðž: ";
     getline(cin, user_FIO);
-    cout << "Ââåäèòå íàçâàíèå êíèãè: ";
+    cout << "Ð’Ð²ÐµÐ´Ð¸Ñ‚Ðµ Ð½Ð°Ð·Ð²Ð°Ð½Ð¸Ðµ ÐºÐ½Ð¸Ð³Ð¸: ";
     getline(cin, book_title);
+    cout << "Ð’Ð²ÐµÐ´Ð¸Ñ‚Ðµ Ð´Ð°Ñ‚Ñƒ Ð²Ñ‹Ð´Ð°Ñ‡Ð¸: ";
+    getline(cin, date);
 
     ifstream file("books.txt");
     if (!file) {
-        cout << "Îøèáêà çàïèñè êíèãè â ôàéë.";
+        cout << "ÐžÑˆÐ¸Ð±ÐºÐ° Ð¾Ñ‚ÐºÑ€Ñ‹Ñ‚Ð¸Ñ Ñ„Ð°Ð¹Ð»Ð°.";
         return;
     }
     ofstream temp("temp.txt");
@@ -176,10 +178,17 @@ void Librarian::giveBook() {
     if (found) {
         remove("books.txt");
         rename("temp.txt", "books.txt");
-        cout << "Êíèãà " << book_title << " óäàëåíà." << endl;
+        cout << "ÐšÐ½Ð¸Ð³Ð° " << book_title << " Ð²Ñ‹Ð´Ð°Ð½Ð°." << endl;
+        ofstream book_file("books_to_users.txt", ios::app);
+        book_file << "Ð’Ñ‹Ð´Ð°Ð½Ð°(ÐºÐ¾Ð¼Ñƒ): " << user_FIO << endl;
+        book_file << "ÐšÐ½Ð¸Ð³Ð°: " << book_title << endl;
+        book_file << "Ð”Ð°Ñ‚Ð° Ð²Ñ‹Ð´Ð°Ñ‡Ð¸: " << date << endl;
+        book_file << "--------------------------" << endl;
+        book_file.close();
+        cout << "Ð—Ð°Ð¿Ð¸ÑÑŒ Ð´Ð¾Ð±Ð°Ð²Ð»ÐµÐ½Ð° Ð² Ð°Ñ€Ñ…Ð¸Ð².";
     }
     else {
         remove("temp.txt");
-        cout << "Êíèãà " << book_title << " íå íàéäåíà." << endl;
+        cout << "ÐšÐ½Ð¸Ð³Ð° " << book_title << " Ð½Ðµ Ð²Ñ‹Ð´Ð°Ð½Ð°." << endl;
     }
 }
