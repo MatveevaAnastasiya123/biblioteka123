@@ -192,7 +192,7 @@ void Librarian::giveBook() {
         cout << "Книга " << book_title << " не выдана." << endl;
     }
 }
-void Librarian::take_book() {
+void Librarian::takeBook() {
     cout << "=====ВОЗВРАЩЕНИЕ КНИГИ=====" << endl;
     string author, title, edition, annatation, year;
     cout << "Введите название книги:";
