@@ -192,3 +192,84 @@ void Librarian::giveBook() {
         cout << "Книга " << book_title << " не выдана." << endl;
     }
 }
+void Librarian::take_book() {
+    cout << "=====ВОЗВРАЩЕНИЕ КНИГИ=====" << endl;
+    string author, title, edition, annatation, year;
+    cout << "Введите название книги:";
+    getline(cin, title);
+    cout << "Введите автора книги: ";
+    getline(cin, author);
+    cout << "Введите год издания: ";
+    getline(cin, year);
+    cout << "Ввелите название издания: ";
+    getline(cin, edition);
+    cout << "Введите анотацию к книге: ";
+    getline(cin, annatation);
+
+    string user_FIO;
+    cout << "Введите ФИО пользователя, который возвращает книгу: ";
+    getline(cin, user_FIO);
+
+    ifstream file("books_to_users.txt");
+    if (!file) {
+        cout << "Ошибка открытия файла." << endl;
+        return;
+    }
+
+    ofstream temp("temp.txt");
+    string line;
+    bool found = false;
+    int skip = 0;
+
+    while (getline(file, line)) {
+        if (skip > 0) {
+            skip--;
+            continue;
+        }
+        if (line == "Выдана(кому): "+user_FIO) {
+            string next_line;
+            if (getline(file, next_line)) {
+                if (next_line == "Книга: "+title) {
+                    found = true;
+                    skip = 2; 
+                    continue;
+                }
+                else {//записываем все обратно
+                    temp << line << endl;
+                    temp << next_line << endl;
+                }
+            }
+        }
+        else {
+            temp << line << endl;
+        }
+    }
+
+    file.close();
+    temp.close();
+
+    if (found) {
+        remove("books_to_users.txt");
+        rename("temp.txt", "books_to_users.txt");
+        cout << "Запись о выдаче книги удалена из архива." << endl;
+
+        ofstream books_file("books.txt", ios::app);
+        if (books_file.is_open()) {
+            books_file << title << endl;
+            books_file << author << endl;
+            books_file << year << endl;
+            books_file << edition << endl;
+            books_file << annatation << endl;
+            books_file << "---------------------" << endl;
+            books_file.close();
+            cout << "Книга '" << title << "' возвращена в библиотеку." << endl;
+        }
+        else {
+            cout << "Ошибка при записи в файл." << endl;
+        }
+    }
+    else {
+        remove("temp.txt");
+        cout << "Книга " << title << " не найдена у пользователя " << user_FIO << endl;
+    }
+}
