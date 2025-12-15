@@ -1,7 +1,7 @@
 #include "biblioteka.M.h"
 
 void Librarian::addUser() {
-    cout << "=====ÄÎÁÀÂËÅÍÈÅ ÏÎËÜÇÎÂÀÒÅËß=====" << endl;
+    cout << "=====ДОБАВЛЕНИЕ ПОЛЬЗОВАТЕЛЯ=====" << endl;
     string fio, birthday, tel, adress;
     cout << "Ââåäèòå ÔÈÎ:";
     getline(cin, fio);
