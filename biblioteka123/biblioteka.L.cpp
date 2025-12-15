@@ -30,28 +30,25 @@ void User::People::ShowMyBooks()
 {
 	ifstream file("books_to_users.txt");
 	string line;
-	
-	if (!file.is_open())
-	{
-		cout << "Ошибка открытия файла books_to_users.txt" << endl;
-		return;
-	}
-	
-	cout << "Книги пользователя с ID" << userID << ":" << endl;
 
-	while (getline(file, line))
-	{
-		int pos = line.find(';');
-		int IDFromFile = stoi(line.substr(0, pos));
-		string BookName = line.substr(pos + 1);
+	cout << "\nВАШИ КНИГИ:\n";
 
-		if (IDFromFile == userID)
-		{
-			cout << BookName << endl;
+	while (getline(file, line)) {
+
+		if (line.find("Выдана(кому): " + fio) == 0) {
+			
+			getline(file, line);
+			string bookName = line.substr(7); 
+			cout << "- " << bookName << endl;
+
+		
+			getline(file, line); 
+			getline(file, line); 
 		}
 	}
+
 	file.close();
-} 
+}
 
 int main()
 {
