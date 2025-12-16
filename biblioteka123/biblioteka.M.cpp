@@ -192,7 +192,15 @@ void Librarian::giveBook() {
         remove("books.txt");
         rename("temp.txt", "books.txt");
         cout << "Книга " << book_title << " выдана." << endl;
+
+         int userID;
+        cout << "Введите ID пользователя: ";
+        cin >> userID;
+        cin.ignore();
+        
         ofstream book_file("books_to_users.txt", ios::app);
+        book_file << "ID: " << userID << endl;                   
+        book_file << "ФИО: " << user_FIO << endl; 
         book_file << "Выдана(кому): " << user_FIO << endl;
         book_file << "Книга: " << book_title << endl;
         book_file << "Дата выдачи: " << date << endl;
@@ -219,9 +227,10 @@ void Librarian::takeBook() {
     cout << "Введите анотацию к книге: ";
     getline(cin, annatation);
 
-    string user_FIO;
-    cout << "Введите ФИО пользователя, который возвращает книгу: ";
-    getline(cin, user_FIO);
+    int userID;
+    cout << "Введите ID пользователя: ";
+    cin >> userID;
+    cin.ignore();
 
     ifstream file("books_to_users.txt");
     if (!file) {
@@ -239,7 +248,7 @@ void Librarian::takeBook() {
             skip--;
             continue;
         }
-        if (line == "Выдана(кому): "+user_FIO) {
+        if (line == "ID: " + to_string(userID)) {
             string next_line;
             if (getline(file, next_line)) {
                 if (next_line == "Книга: "+title) {
