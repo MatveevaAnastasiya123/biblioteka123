@@ -305,6 +305,6 @@ void Librarian::takeBook() {
     }
     else {
         remove("temp.txt");
-        cout << "Книга " << title << " не найдена у пользователя " << user_ID << endl;
+        cout << "Книга " << title << " не найдена у пользователя " << userID << endl;
     }
 }
