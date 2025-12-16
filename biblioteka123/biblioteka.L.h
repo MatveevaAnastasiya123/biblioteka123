@@ -6,16 +6,13 @@
 
 using namespace std;
 
-namespace User
-{
-	class People
-	{
-	private:
-		int userID;
-	public:
-		People(int ID);
+class User {
+public:
+	string fio;
+	int userID;
 
-		void ShowBooksCatalog();
-		void ShowMyBooks();
-	};
-}
+	User();
+
+	void login();
+	void showBooks();
+};

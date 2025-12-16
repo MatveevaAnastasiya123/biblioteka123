@@ -1,69 +1,53 @@
 #include "biblioteka.L.h"
 
-User::People::People(int ID)
-{
-	userID = ID;
+User::User() {
+	userID = -1;
 }
 
-void User::People::ShowBooksCatalog()
+void User::login()
 {
-	ifstream file("books.txt");
+	cout << "Введите ФИО: ";
+	getline(cin, fio);
+
+	ifstream file("users.txt");
 	string line;
+	userID = -1;
 
-	if (!file.is_open())
-	{
-		cout << "Ошибка открытия файла books.txt" << endl;
-		return;
+	while (getline(file, line)) {
+		if (line.find("ID: ") == 0) {
+			int id = stoi(line.substr(4));
+			getline(file, line);
+			if (line == fio) {
+				userID = id;
+				break;
+			}
+		}
 	}
-
-	cout << "Каталог книг: " << endl;
-
-	while (getline(file, line))
-	{
-		cout << line << endl;
-	}
-
 	file.close();
+
+	if (userID == -1)
+		cout << "Пользователь не найден!" << endl;
+	else
+		cout << "Вход успешен! ID: " << userID << endl;
 }
 
-void User::People::ShowMyBooks()
-{
+void User::showBooks() {
+	if (userID == -1)
+		return;
+
 	ifstream file("books_to_users.txt");
 	string line;
 
-	cout << "\nВАШИ КНИГИ:\n";
+	cout << "Книги пользователя " << fio << ":" << endl;
 
 	while (getline(file, line)) {
-
-		if (line.find("Выдана(кому): " + fio) == 0) {
-			
+		if (line == "ID: " + to_string(userID)) {
 			getline(file, line);
-			string bookName = line.substr(7); 
-			cout << "- " << bookName << endl;
-
-		
-			getline(file, line); 
-			getline(file, line); 
+			getline(file, line);
+			cout << "- " << line.substr(7) << endl;
+			getline(file, line);
+			getline(file, line);
 		}
 	}
-
 	file.close();
-}
-
-int main()
-{
-	setlocale(LC_ALL, "Russian");
-	int ID;
-
-	cout << "Введите ID пользователя: ";
-	cin >> ID;
-
-	User::People user(ID);
-
-	user.ShowBooksCatalog();
-	cout << endl;
-	user.ShowMyBooks();
-
-	return 0;
-
 }
