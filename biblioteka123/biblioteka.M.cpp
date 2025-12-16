@@ -64,13 +64,19 @@ void Librarian::delUser() {
             continue;
         }
 
-        if (line == FIO_del) {
-            found = true;
-            skip = 4;
-            continue;
-        }
-
-        temp << line << endl;
+        if (line.find("ID: ") == 0) {
+            string fio_line;
+            if (getline(file, fio_line)) {
+                if (fio_line == FIO_del) {
+                    found = true;
+                    skip = 4; 
+                    continue;
+                } else {
+                    temp << line << endl;
+                    temp << fio_line << endl;
+                }
+            }
+        } 
     }
 
     file.close();
@@ -248,19 +254,22 @@ void Librarian::takeBook() {
             continue;
         }
         if (line == "ID: " + to_string(userID)) {
-            getline(file, line);
-            getline(file, line);
-            if (line == "Книга: " + title) {
-                found = true;
-                skip = 1;
-                continue;
+            string fio_line;
+            if (getline(file, fio_line)) {
+                string book_line;
+                if (getline(file, book_line)) {
+                    if (book_line == "Книга: " + title) {
+                        found = true;
+                        skip = 2;
+                        continue;
+                    } else {
+                        temp << line << endl;
+                        temp << fio_line << endl;
+                        temp << book_line << endl;
+                    }
+                }
             }
-            else {
-                temp << "ID: " + to_string(userID) << endl;
-                temp << line << endl;
-                temp << line << endl;
-            }
-        else {
+        } else {
             temp << line << endl;
         }
     }
@@ -290,6 +299,6 @@ void Librarian::takeBook() {
     }
     else {
         remove("temp.txt");
-        cout << "Книга " << title << " не найдена у пользователя " << user_FIO << endl;
+        cout << "Книга " << title << " не найдена у пользователя " << user_ID << endl;
     }
 }
