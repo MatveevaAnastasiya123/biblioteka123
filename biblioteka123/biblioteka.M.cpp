@@ -200,7 +200,6 @@ void Librarian::giveBook() {
         
         ofstream book_file("books_to_users.txt", ios::app);
         book_file << "ID: " << userID << endl;                   
-        book_file << "ФИО: " << user_FIO << endl; 
         book_file << "Выдана(кому): " << user_FIO << endl;
         book_file << "Книга: " << book_title << endl;
         book_file << "Дата выдачи: " << date << endl;
@@ -249,19 +248,18 @@ void Librarian::takeBook() {
             continue;
         }
         if (line == "ID: " + to_string(userID)) {
-            string next_line;
-            if (getline(file, next_line)) {
-                if (next_line == "Книга: "+title) {
-                    found = true;
-                    skip = 2; 
-                    continue;
-                }
-                else {//записываем все обратно
-                    temp << line << endl;
-                    temp << next_line << endl;
-                }
+            getline(file, line);
+            getline(file, line);
+            if (line == "Книга: " + title) {
+                found = true;
+                skip = 1;
+                continue;
             }
-        }
+            else {
+                temp << "ID: " + to_string(userID) << endl;
+                temp << line << endl;
+                temp << line << endl;
+            }
         else {
             temp << line << endl;
         }
