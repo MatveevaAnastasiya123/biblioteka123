@@ -12,14 +12,27 @@ void Librarian::addUser() {
     cout << "Введите адрес:";
     getline(cin, adress);
 
+    ifstream idFile("last_id.txt");
+    int lastID = 1;
+    if (idFile) {
+        idFile >> lastID;
+        idFile.close();
+    }
+
+     int newID = lastID;
+
     ofstream file("users.txt", ios::app);
     if (file.is_open()) {
+        file << "ID: " << newID << endl;
         file << fio << endl;
         file << birthday << endl;
         file << tel << endl;
         file << adress << endl;
         file << "-------------" << endl;
         file.close();
+        ofstream idOut("last_id.txt");
+        idOut << (lastID + 1);
+        idOut.close();
         cout << "Новый пользователь " << fio << " добавлен." << endl;
     }
     else {
