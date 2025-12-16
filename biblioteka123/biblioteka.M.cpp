@@ -74,6 +74,12 @@ void Librarian::delUser() {
                 } else {
                     temp << line << endl;
                     temp << fio_line << endl;
+                     for (int i = 0; i < 3; i++) {
+                        getline(file, line);
+                        temp << line << endl;
+                    }
+                    getline(file, line);
+                    temp << line << endl;
                 }
             }
         } 
