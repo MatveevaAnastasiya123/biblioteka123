@@ -1,5 +1,5 @@
 ﻿#include "biblioteka.M.h"
-
+#include "biblioteka.L.h"
 int main() {
 	SetConsoleCP(1251);
 	SetConsoleOutputCP(1251);
