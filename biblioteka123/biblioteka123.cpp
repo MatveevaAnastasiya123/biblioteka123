@@ -75,12 +75,12 @@ if(vhod==3){
 	books.showAvailable();
 }
 if(vhod==4){
-	Magazines magazines;
+	Magazine magazines;
 	magazines.showAvailable();
 }
 if(vhod==5){
 	ELiter ELiter;
-	books.showAvailable();
+	ELiter.showAvailable();
 }
 	return 0;
 }
