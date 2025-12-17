@@ -48,6 +48,3 @@ void ELiter::showAvailable() {
     
     file.close();
 }
-    
-    file.close();
-}
