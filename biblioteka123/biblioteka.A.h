@@ -3,6 +3,8 @@
 #include <windows.h>
 #include <string>
 #include <fstream>
+#include "Literature.h"
+using namespace std;
 
 class Magazine : public Literature {
 public:
