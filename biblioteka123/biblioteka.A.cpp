@@ -6,13 +6,10 @@ void Magazine::showAvailable() {
 	int count = 0;
 
 	if (!file.is_open()) {
-		cout << "Ôàéë magazines.txt íå íàéäåí!" << endl;
+		cout << "Ã”Ã Ã©Ã« magazines.txt Ã­Ã¥ Ã­Ã Ã©Ã¤Ã¥Ã­!" << endl;
 		return;
 	}
-
-	cout << "\n==========================================\n";
-	cout << " ÊÀÒÀËÎÃ ÆÓÐÍÀËÎÂ\n";
-	cout << "==========================================\n\n";
+	cout << "=====ÐšÐÐ¢ÐÐ›ÐžÐ“ Ð–Ð£Ð ÐÐÐ›ÐžÐ’====="<<endl;
 
 	while (getline(file, line)) {
 		if (line == "---------------------") {
@@ -33,18 +30,18 @@ void Magazine::showAvailable() {
 		getline(file, line);
 		string description = line;
 
-		cout << "ÆÓÐÍÀË #" << count + 1 << "\n";
-		cout << "Íàçâàíèå: " << title << "\n";
-		cout << "Àâòîðû: " << author << "\n";
-		cout << "Ãîä: " << year << "\n";
-		cout << "Íîìåð: " << issue << "\n";
-		cout << "Ìåñÿö: " << month << "\n";
-		cout << "Îïèñàíèå: " << description << "\n";
+		cout << "Ã†Ã“ÃÃÃ€Ã‹ #" << count + 1 << endl;
+		cout << "ÃÃ Ã§Ã¢Ã Ã­Ã¨Ã¥: " << title <<endl;
+		cout << "Ã€Ã¢Ã²Ã®Ã°Ã»: " << author <<endl;
+		cout << "ÃƒÃ®Ã¤: " << year << endl;
+		cout << "ÃÃ®Ã¬Ã¥Ã°: " << issue << endl;
+		cout << "ÃŒÃ¥Ã±Ã¿Ã¶: " << month << endl;
+		cout << "ÃŽÃ¯Ã¨Ã±Ã Ã­Ã¨Ã¥: " << description <<endl";
 		cout << endl;
 	}
 
 	if (count == 0) {
-		cout << "Â êàòàëîãå ïîêà íåò æóðíàëîâ.\n";
+		cout << "Ã‚ ÃªÃ Ã²Ã Ã«Ã®Ã£Ã¥ Ã¯Ã®ÃªÃ  Ã­Ã¥Ã² Ã¦Ã³Ã°Ã­Ã Ã«Ã®Ã¢.\n";
 	}
 
 	file.close();
