@@ -308,3 +308,214 @@ void Librarian::takeBook() {
         cout << "Книга " << title << " не найдена у пользователя " << userID << endl;
     }
 }
+//-----------------------------------------------------ЖУРНАЛЫ    
+void Librarian::addMagazine() {
+    cout << "=====ДОБАВЛЕНИЕ ЖУРНАЛА=====" << endl;
+    string author, title, month, annatation, year;
+    cout << "Введите название журнала:";
+    getline(cin, title);
+    cout << "Введите ФИО автора: ";
+    getline(cin, author);
+    cout << "Введите год издания: ";
+    getline(cin, year);
+    cout << "Введите месяц: ";
+    getline(cin, month);
+    cout << "Введите анотацию к книге: ";
+    getline(cin, annatation);
+
+    ofstream file("books.txt", ios::app);
+    if (file.is_open()) {
+        file << title << endl;
+        file << author << endl;
+        file << year << endl;
+        file << month << endl;
+        file << annatation << endl;
+        file << "---------------------" << endl;
+        file.close();
+        cout << "Журнал " << title << " добавлен в библиотеку." << endl;
+    }
+}
+
+void Librarian::delMagazine() {
+    cout << "=====УДАЛЕНИЕ ЖУРНАЛА=====" << endl;
+    string del_title;
+    cout << "Введите название журнала, который хотите удалить: ";
+    getline(cin, del_title);
+    ifstream file("magazines.txt");
+    if (!file) {
+        cout << "Ошибка открытия файла с журналами.";
+        return;
+    }
+    ofstream temp("temp.txt");
+    string line;
+    bool found = false;
+    int skip = 0;
+
+    while (getline(file, line)) {
+        if (skip > 0) {
+            skip--;
+            continue;
+        }
+        if (line == del_title) {
+            found = true;
+            skip = 5;
+            continue;
+        }
+        temp << line << endl;
+    }
+    file.close();
+    temp.close();
+    if (found) {
+        remove("magazines.txt");
+        rename("temp.txt", "magazines.txt");
+        cout << "Журнал " << del_title << " удален." << endl;
+    }
+    else {
+        remove("temp.txt");
+        cout << "Журнал " << del_title << " не удален." << endl;
+    }
+}
+
+void Librarian::giveMagazine() {
+    cout << "=====ВЫДАЧА ЖУРНАЛ=====" << endl;
+    string user_FIO, mag_title, date;
+    cout << "Введите ФИО: ";
+    getline(cin, user_FIO);
+    cout << "Введите название журнала: ";
+    getline(cin, mag_title);
+    cout << "Введите дату выдачи: ";
+    getline(cin, date);
+
+    ifstream file("magazines.txt");
+    if (!file) {
+        cout << "Ошибка открытия файла с журналами.";
+        return;
+    }
+    ofstream temp("temp.txt");
+    string line;
+    bool found = false;
+    int skip = 0;
+
+    while (getline(file, line)) {
+        if (skip > 0) {
+            skip--;
+            continue;
+        }
+        if (line == mag_title) {
+            found = true;
+            skip = 5;
+            continue;
+        }
+        temp << line << endl;
+    }
+    file.close();
+    temp.close();
+    if (found) {
+        remove("magazines.txt");
+        rename("temp.txt", "magazines.txt");
+        cout << "Журнал " << mag_title << " выдан." << endl;
+
+         int userID;
+        cout << "Введите ID пользователя: ";
+        cin >> userID;
+        cin.ignore();
+        
+        ofstream book_file("magazines_to_users.txt", ios::app);
+        book_file << "ID: " << userID << endl;                   
+        book_file << "Выдан(кому): " << user_FIO << endl;
+        book_file << "Журнал: " << mag_title << endl;
+        book_file << "Дата выдачи: " << date << endl;
+        book_file << "--------------------------" << endl;
+        book_file.close();
+        cout << "Запись добавлена в архив.";
+    }
+    else {
+        remove("temp.txt");
+        cout << "Журнал " << mag_title << " не выдан." << endl;
+    }
+}
+void Librarian::takeMagazine() {
+    cout << "=====ВОЗВРАЩЕНИЕ ЖУРНАЛА=====" << endl;
+    string author, title, month, annatation, year;
+    cout << "Введите название журнала:";
+    getline(cin, title);
+    cout << "Введите автора журнала: ";
+    getline(cin, author);
+    cout << "Введите год издания: ";
+    getline(cin, year);
+    cout << "Ввелите месяц: ";
+    getline(cin, edition);
+    cout << "Введите анотацию к журналу: ";
+    getline(cin, annatation);
+
+    int userID;
+    cout << "Введите ID пользователя: ";
+    cin >> userID;
+    cin.ignore();
+
+    ifstream file("magazines_to_users.txt");
+    if (!file) {
+        cout << "Ошибка открытия файла для записи выдачи." << endl;
+        return;
+    }
+
+    ofstream temp("temp.txt");
+    string line;
+    bool found = false;
+    int skip = 0;
+
+    while (getline(file, line)) {
+        if (skip > 0) {
+            skip--;
+            continue;
+        }
+        if (line == "ID: " + to_string(userID)) {
+            string fio_line;
+            if (getline(file, fio_line)) {
+                string mag_line;
+                if (getline(file, mag_line)) {
+                    if (mag_line == "Журнал: " + title) {
+                        found = true;
+                        skip = 2;
+                        continue;
+                    } else {
+                        temp << line << endl;
+                        temp << fio_line << endl;
+                        temp << mag_line << endl;
+                    }
+                }
+            }
+        } else {
+            temp << line << endl;
+        }
+    }
+
+    file.close();
+    temp.close();
+
+    if (found) {
+        remove("magazines_to_users.txt");
+        rename("temp.txt", "magazines_to_users.txt");
+        cout << "Запись о выдаче журнала удалена из архива." << endl;
+
+        ofstream mag_file("magazines.txt", ios::app);
+        if (mag_file.is_open()) {
+            books_file << title << endl;
+            books_file << author << endl;
+            books_file << year << endl;
+            books_file << month << endl;
+            books_file << annatation << endl;
+            books_file << "---------------------" << endl;
+            books_file.close();
+            cout << "Журнал " << title << " возвращен в библиотеку." << endl;
+        }
+        else {
+            cout << "Ошибка при записи в файл." << endl;
+        }
+    }
+    else {
+        remove("temp.txt");
+        cout << "Журнал " << title << " не найден у пользователя " << userID << endl;
+    }
+}
+
