@@ -1,5 +1,7 @@
 #pragma once
 #include <iostream>
+#include <windows.h>
+#include <string>
 
 
 class Magazine : public Literature {
