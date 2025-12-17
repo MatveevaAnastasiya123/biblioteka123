@@ -1,6 +1,9 @@
-﻿#include "biblioteka.M.h"
+#include "biblioteka.B.h"
+#include "biblioteka.M.h"
 #include "biblioteka.L.h"
 #include "biblioteka.A.h"
+#include "biblioteka.Lat.h"
+
 int main() {
 	SetConsoleCP(1251);
 	SetConsoleOutputCP(1251);
@@ -8,6 +11,9 @@ int main() {
     cout<<"=====ВХОД====="<<endl;
     cout<<"1) Войти как библиотекарь"<<endl;
     cout<<"2) Войти как пользователь"<<endl;
+	cout<<"3) Посмотреть каталог книг"<<endl;
+	cout<<"4) Посмотреть каталог журналов"<<endl;
+	cout<<"5) Посмотреть каталог электронной литературы"<<endl;
     cout<<"Выберите: ";
     cin>>vhod;
     cin.ignore();
@@ -64,5 +70,17 @@ int main() {
             } while (choice != 2);
         }
     }
+if(vhod==3){
+	Books books;
+	books.showAvailable();
+}
+if(vhod==4){
+	Magazines magazines;
+	magazines.showAvailable();
+}
+if(vhod==5){
+	ELiter ELiter;
+	books.showAvailable();
+}
 	return 0;
 }
