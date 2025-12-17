@@ -30,4 +30,8 @@ public:
 	void delBook();
 	void giveBook();
 	void takeBook();
+ void addMagazine();
+    void delMagazine();
+    void giveMagazine();
+    void takeMagazine();
 };
