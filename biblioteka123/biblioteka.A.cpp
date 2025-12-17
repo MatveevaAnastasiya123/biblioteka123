@@ -1,78 +1,51 @@
-#include <iostream>
-"biblioteka.A.h"
-using namespace std;
+#include "biblioteka.A.h"
 
+void Magazine::showAvailable() {
+	ifstream file("magazines.txt");
+	string line;
+	int count = 0;
 
-Literature::Literature() {
-	title = "Без названия";
-	author = "Неизвестен";
-	year = 2000;
-}
+	if (!file.is_open()) {
+		cout << "Файл magazines.txt не найден!" << endl;
+		return;
+	}
 
-Literature::Literature(string t, string a, int y) {
-	title = t;
-	author = a;
-	year = y;
-}
+	cout << "\n==========================================\n";
+	cout << " КАТАЛОГ ЖУРНАЛОВ\n";
+	cout << "==========================================\n\n";
 
-void Literature::display() {
-	cout << "Название: " << title << endl;
-	cout << "Автор: " << author << endl;
-	cout << "Год: " << year << endl;
-}
+	while (getline(file, line)) {
+		if (line == "---------------------") {
+			count++;
+			cout << "------------------------------------------\n\n";
+			continue;
+		}
 
-void Literature::setInfo(string t, string a, int y) {
-	title = t;
-	author = a;
-	year = y;
-}
-string Literature::getTitle() {
-	return title;
-}
-string Literature::getAuthor() {
-	return author;
-}
-int Literature::getYear() {
-	return year;
-}
+		string title = line;
+		getline(file, line);
+		string author = line;
+		getline(file, line);
+		string year = line;
+		getline(file, line);
+		string issue = line;
+		getline(file, line);
+		string month = line;
+		getline(file, line);
+		string description = line;
 
+		cout << "ЖУРНАЛ #" << count + 1 << "\n";
+		cout << "Название: " << title << "\n";
+		cout << "Авторы: " << author << "\n";
+		cout << "Год: " << year << "\n";
+		cout << "Номер: " << issue << "\n";
+		cout << "Месяц: " << month << "\n";
+		cout << "Описание: " << description << "\n";
+		cout << endl;
+	}
 
-Magazine::Magazine() : Literature() {
-	issue = 1;
-	category = "Общий";
-}
+	if (count == 0) {
+		cout << "В каталоге пока нет журналов.\n";
+	}
 
-Magazine::Magazine(string t, string a, int y, int i, string c) : Literature(t, a, y) {
-	issue = i;
-	category = c;
-}
-
-void Magazine::displayMagazine() {
-	cout << "\n===Журнал===" << endl;
-	display();
-	cout << "Номер выпуска: " << issue << endl;
-	cout << "Категория: " << category << endl;
-	cout << "=======================" << endl;
-}
-
-void Magazine::nextIssue() {
-	issue++;
-	year++;
-	cout << "Выпущен следующий номер: " << issue << " (" << year << " год)" << endl;
-}
-
-int Magazine::getIssue() {
-	return issue;
-}
-
-string Magazine::getCategory() {
-	return category;
-}
-
-void Magazine::setIssue(int i) {
-	issue = i;
-}
-
-void Magazine::setCategory(string c) {
-	category = c;
+	file.close();
 }
