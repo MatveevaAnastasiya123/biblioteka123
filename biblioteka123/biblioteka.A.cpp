@@ -6,7 +6,7 @@ void Magazine::showAvailable() {
 	int count = 0;
 
 	if (!file.is_open()) {
-		cout << "Ôàéë magazines.txt íå íàéäåí!" << endl;
+		cout << "Файл magazines.txt не найден!" << endl;
 		return;
 	}
 	cout << "=====КАТАЛОГ ЖУРНАЛОВ====="<<endl;
@@ -30,18 +30,18 @@ void Magazine::showAvailable() {
 		getline(file, line);
 		string description = line;
 
-		cout << "ÆÓÐÍÀË #" << count + 1 << endl;
-		cout << "Íàçâàíèå: " << title <<endl;
-		cout << "Àâòîðû: " << author <<endl;
-		cout << "Ãîä: " << year << endl;
-		cout << "Íîìåð: " << issue << endl;
-		cout << "Ìåñÿö: " << month << endl;
-		cout << "Îïèñàíèå: " << description <<endl";
-		cout << endl;
+		cout << "ЖУРНАЛ #" << count + 1 << "\n";
+cout << "Название: " << title << "\n";
+cout << "Авторы: " << author << "\n";
+cout << "Год: " << year << "\n";
+cout << "Номер: " << issue << "\n";
+cout << "Месяц: " << month << "\n";
+cout << "Описание: " << description << "\n";
+cout << endl;
 	}
 
 	if (count == 0) {
-		cout << "Â êàòàëîãå ïîêà íåò æóðíàëîâ.\n";
+		cout << "В каталоге пока нет журналов.\n";
 	}
 
 	file.close();
