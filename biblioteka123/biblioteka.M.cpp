@@ -443,8 +443,8 @@ void Librarian::takeMagazine() {
     getline(cin, author);
     cout << "Введите год издания: ";
     getline(cin, year);
-    cout << "Ввелите месяц: ";
-    getline(cin, edition);
+    cout << "Введите месяц: ";
+    getline(cin, month);
     cout << "Введите анотацию к журналу: ";
     getline(cin, annatation);
 
@@ -500,13 +500,13 @@ void Librarian::takeMagazine() {
 
         ofstream mag_file("magazines.txt", ios::app);
         if (mag_file.is_open()) {
-            books_file << title << endl;
-            books_file << author << endl;
-            books_file << year << endl;
-            books_file << month << endl;
-            books_file << annatation << endl;
-            books_file << "---------------------" << endl;
-            books_file.close();
+            mag_file << title << endl;
+            mag_file << author << endl;
+            mag_file << year << endl;
+            mag_file << month << endl;
+            mag_file << annatation << endl;
+            mag_file << "---------------------" << endl;
+            mag_file.close();
             cout << "Журнал " << title << " возвращен в библиотеку." << endl;
         }
         else {
