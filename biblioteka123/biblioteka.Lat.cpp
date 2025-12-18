@@ -7,11 +7,11 @@ void ELiter::showAvailable() {
     int count = 0;
     
     if (!file.is_open()) {
-        cout << "Ð¤Ð°Ð¹Ð» eliter.txt Ð½Ðµ Ð½Ð°Ð¹Ð´ÐµÐ½!" << endl;
+        cout << "Ôàéë eliter.txt íå íàéäåí!" << endl;
         return;
     }
     
-    cout << "=====ÐšÐÐ¢ÐÐ›ÐžÐ“ Ð­Ð›Ð•ÐšÐ¢Ð ÐžÐÐÐžÐ™ Ð›Ð˜Ð¢Ð•Ð ÐÐ¢Ð£Ð Ð«====="<<endl;
+    cout << "=====ÊÀÒÀËÎÃ ÝËÅÊÒÐÎÍÍÎÉ ËÈÒÅÐÀÒÓÐÛ====="<<endl;
     
     while (getline(file, line)) {
         if (line == "---------------------") {
@@ -32,18 +32,18 @@ void ELiter::showAvailable() {
         getline(file, line);
         string description = line;
         
-        cout << "Ð­Ð›Ð•ÐšÐ¢Ð ÐžÐÐÐÐ¯ ÐšÐÐ˜Ð“Ð #" << count + 1 << endl;
-        cout << "ÐÐ°Ð·Ð²Ð°Ð½Ð¸Ðµ:  " << title <<endl;
-        cout << "ÐÐ²Ñ‚Ð¾Ñ€:     " << author <<endl;
-        cout << "Ð“Ð¾Ð´:       " << year <<endl;
-        cout << "Ð¤Ð¾Ñ€Ð¼Ð°Ñ‚:    " << format <<endl;
-        cout << "Ð Ð°Ð·Ð¼ÐµÑ€:    " << size <<endl;
-        cout << "ÐžÐ¿Ð¸ÑÐ°Ð½Ð¸Ðµ:  " << description <<endl;
+        cout << "ÝËÅÊÒÐÎÍÍÀß ÊÍÈÃÀ #" << count + 1 << endl;
+        cout << "Íàçâàíèå:  " << title <<endl;
+        cout << "Àâòîð:     " << author <<endl;
+        cout << "Ãîä:       " << year <<endl;
+        cout << "Ôîðìàò:    " << format <<endl;
+        cout << "Ðàçìåð:    " << size <<endl;
+        cout << "Îïèñàíèå:  " << description <<endl;
         cout << endl;
     }
     
     if (count == 0) {
-        cout << "Ð’ ÐºÐ°Ñ‚Ð°Ð»Ð¾Ð³Ðµ Ð¿Ð¾ÐºÐ° Ð½ÐµÑ‚ ÑÐ»ÐµÐºÑ‚Ñ€Ð¾Ð½Ð½Ð¾Ð¹ Ð»Ð¸Ñ‚ÐµÑ€Ð°Ñ‚ÑƒÑ€Ñ‹."<<endl;
+        cout << "Â êàòàëîãå ïîêà íåò ýëåêòðîííîé ëèòåðàòóðû."<<endl;
     }
     
     file.close();

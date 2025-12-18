@@ -5,10 +5,10 @@ string line;
 int count = 0;
 
 if (!file.is_open()) {
-cout << "Ğ¤Ğ°Ğ¹Ğ» books.txt Ğ½Ğµ Ğ½Ğ°Ğ¹Ğ´ĞµĞ½!" << endl;
+cout << "Ôàéë books.txt íå íàéäåí!" << endl;
 return;
 }
-cout << "=====ĞšĞĞ¢ĞĞ›ĞĞ“ ĞšĞĞ˜Ğ“=====";
+cout << "=====ÊÀÒÀËÎÃ ÊÍÈÃ=====";
 
 
 while (getline(file, line)) {
@@ -28,17 +28,17 @@ string edition = line;
 getline(file, line);
 string annotation = line;
 
-cout << "ĞšĞĞ˜Ğ“Ğ #" << count + 1 <<  endl;
-cout << "ĞĞ°Ğ·Ğ²Ğ°Ğ½Ğ¸Ğµ: " << title << endl;
-cout << "ĞĞ²Ñ‚Ğ¾Ñ€: " << author <<  endl;
-cout << "Ğ“Ğ¾Ğ´: " << year << endl;
-cout << "Ğ˜Ğ·Ğ´Ğ°Ñ‚ĞµĞ»ÑŒÑÑ‚Ğ²Ğ¾: " << edition <<  endl;
-cout << "ĞĞ½Ğ½Ğ¾Ñ‚Ğ°Ñ†Ğ¸Ñ: " << annotation <<  endl;
+cout << "ÊÍÈÃÀ #" << count + 1 <<  endl;
+cout << "Íàçâàíèå: " << title << endl;
+cout << "Àâòîğ: " << author <<  endl;
+cout << "Ãîä: " << year << endl;
+cout << "Èçäàòåëüñòâî: " << edition <<  endl;
+cout << "Àííîòàöèÿ: " << annotation <<  endl;
 cout << endl;
 }
 
 if (count == 0) {
-cout << "Ğ’ ĞºĞ°Ñ‚Ğ°Ğ»Ğ¾Ğ³Ğµ Ğ¿Ğ¾ĞºĞ° Ğ½ĞµÑ‚ ĞºĞ½Ğ¸Ğ³.\n";
+cout << "Â êàòàëîãå ïîêà íåò êíèã.\n";
 }
 
 file.close();

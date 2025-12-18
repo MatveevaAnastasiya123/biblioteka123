@@ -1,15 +1,15 @@
 #include "biblioteka.M.h"
 
 void Librarian::addUser() {
-    cout << "=====Ð”ÐžÐ‘ÐÐ’Ð›Ð•ÐÐ˜Ð• ÐŸÐžÐ›Ð¬Ð—ÐžÐ’ÐÐ¢Ð•Ð›Ð¯=====" << endl;
+    cout << "=====ÄÎÁÀÂËÅÍÈÅ ÏÎËÜÇÎÂÀÒÅËß=====" << endl;
     string fio, birthday, tel, adress;
-    cout << "Ð’Ð²ÐµÐ´Ð¸Ñ‚Ðµ Ð¤Ð˜Ðž:";
+    cout << "Ââåäèòå ÔÈÎ:";
     getline(cin, fio);
-    cout << "Ð’Ð²ÐµÐ´Ð¸Ñ‚Ðµ Ð´Ð°Ñ‚Ñƒ Ñ€Ð¾Ð¶Ð´ÐµÐ½Ð¸Ñ:";
+    cout << "Ââåäèòå äàòó ðîæäåíèÿ:";
     getline(cin, birthday);
-    cout << "Ð’Ð²ÐµÐ´Ð¸Ñ‚Ðµ Ñ‚ÐµÐ»ÐµÑ„Ð¾Ð½:";
+    cout << "Ââåäèòå òåëåôîí:";
     getline(cin, tel);
-    cout << "Ð’Ð²ÐµÐ´Ð¸Ñ‚Ðµ Ð°Ð´Ñ€ÐµÑ:";
+    cout << "Ââåäèòå àäðåñ:";
     getline(cin, adress);
 
     ifstream idFile("last_id.txt");
@@ -33,23 +33,23 @@ void Librarian::addUser() {
         ofstream idOut("last_id.txt");
         idOut << (lastID + 1);
         idOut.close();
-        cout << "ÐÐ¾Ð²Ñ‹Ð¹ Ð¿Ð¾Ð»ÑŒÐ·Ð¾Ð²Ð°Ñ‚ÐµÐ»ÑŒ " << fio << " Ð´Ð¾Ð±Ð°Ð²Ð»ÐµÐ½." << endl;
+        cout << "Íîâûé ïîëüçîâàòåëü " << fio << " äîáàâëåí." << endl;
     }
     else {
-        cout << "ÐžÑˆÐ¸Ð±ÐºÐ° Ð·Ð°Ð¿Ð¸ÑÐ¸ Ð¿Ð¾Ð»ÑŒÐ·Ð¾Ð²Ð°Ñ‚ÐµÐ»Ñ Ð² Ñ„Ð°Ð¹Ð».";
+        cout << "Îøèáêà çàïèñè ïîëüçîâàòåëÿ â ôàéë.";
         return;
     }
 }
 
 void Librarian::delUser() {
-    cout << "=====Ð£Ð”ÐÐ›Ð•ÐÐ˜Ð• ÐŸÐžÐ›Ð¬Ð—ÐžÐ’ÐÐ¢Ð•Ð›Ð¯=====" << endl;
+    cout << "=====ÓÄÀËÅÍÈÅ ÏÎËÜÇÎÂÀÒÅËß=====" << endl;
     string FIO_del;
-    cout << "Ð’Ð²ÐµÐ´Ð¸Ñ‚Ðµ Ð¤Ð˜Ðž Ð¿Ð¾Ð»ÑŒÐ·Ð¾Ð²Ð°Ñ‚ÐµÐ»Ñ, ÐºÐ¾Ñ‚Ð¾Ñ€Ð¾Ð³Ð¾ Ñ…Ð¾Ñ‚Ð¸Ñ‚Ðµ ÑƒÐ´Ð°Ð»Ð¸Ñ‚ÑŒ: ";
+    cout << "Ââåäèòå ÔÈÎ ïîëüçîâàòåëÿ, êîòîðîãî õîòèòå óäàëèòü: ";
     getline(cin, FIO_del);
 
     ifstream file("users.txt");
     if (!file) {
-        cout << "ÐžÑˆÐ¸Ð±ÐºÐ° Ð¾Ñ‚ÐºÑ€Ñ‹Ñ‚Ð¸Ñ Ñ„Ð°Ð¹Ð»Ð° Ñ Ð¿Ð¾Ð»ÑŒÐ·Ð¾Ð²Ð°Ñ‚ÐµÐ»ÑÐ¼Ð¸." << endl;
+        cout << "Îøèáêà îòêðûòèÿ ôàéëà ñ ïîëüçîâàòåëÿìè." << endl;
         return;
     }
 
@@ -91,26 +91,26 @@ void Librarian::delUser() {
     if (found) {
         remove("users.txt");
         rename("temp.txt", "users.txt");
-        cout << "ÐŸÐ¾Ð»ÑŒÐ·Ð¾Ð²Ð°Ñ‚ÐµÐ»ÑŒ ÑƒÐ´Ð°Ð»ÐµÐ½. " << endl;
+        cout << "Ïîëüçîâàòåëü óäàëåí. " << endl;
     }
     else {
         remove("temp.txt");
-        cout << "ÐŸÐ¾Ð»ÑŒÐ·Ð¾Ð²Ð°Ñ‚ÐµÐ»ÑŒ Ð½Ðµ Ð½Ð°Ð¹Ð´ÐµÐ½." << endl;
+        cout << "Ïîëüçîâàòåëü íå íàéäåí." << endl;
     }
 }
 
 void Librarian::addBook() {
-    cout << "=====Ð”ÐžÐ‘ÐÐ’Ð›Ð•ÐÐ˜Ð• ÐšÐÐ˜Ð“Ð˜=====" << endl;
+    cout << "=====ÄÎÁÀÂËÅÍÈÅ ÊÍÈÃÈ=====" << endl;
     string author, title, edition, annatation, year;
-    cout << "Ð’Ð²ÐµÐ´Ð¸Ñ‚Ðµ Ð½Ð°Ð·Ð²Ð°Ð½Ð¸Ðµ ÐºÐ½Ð¸Ð³Ð¸:";
+    cout << "Ââåäèòå íàçâàíèå êíèãè:";
     getline(cin, title);
-    cout << "Ð’Ð²ÐµÐ´Ð¸Ñ‚Ðµ Ð¤Ð˜Ðž Ð°Ð²Ñ‚Ð¾Ñ€Ð°: ";
+    cout << "Ââåäèòå ÔÈÎ àâòîðà: ";
     getline(cin, author);
-    cout << "Ð’Ð²ÐµÐ´Ð¸Ñ‚Ðµ Ð³Ð¾Ð´ Ð¸Ð·Ð´Ð°Ð½Ð¸Ñ: ";
+    cout << "Ââåäèòå ãîä èçäàíèÿ: ";
     getline(cin, year);
-    cout << "Ð’Ð²ÐµÐ´Ð¸Ñ‚Ðµ Ð½Ð°Ð·Ð²Ð°Ð½Ð¸Ðµ Ð¸Ð·Ð´Ð°Ð½Ð¸Ñ: ";
+    cout << "Ââåäèòå íàçâàíèå èçäàíèÿ: ";
     getline(cin, edition);
-    cout << "Ð’Ð²ÐµÐ´Ð¸Ñ‚Ðµ Ð°Ð½Ð¾Ñ‚Ð°Ñ†Ð¸ÑŽ Ðº ÐºÐ½Ð¸Ð³Ðµ: ";
+    cout << "Ââåäèòå àíîòàöèþ ê êíèãå: ";
     getline(cin, annatation);
 
     ofstream file("books.txt", ios::app);
@@ -122,18 +122,18 @@ void Librarian::addBook() {
         file << annatation << endl;
         file << "---------------------" << endl;
         file.close();
-        cout << "ÐšÐ½Ð¸Ð³Ð° " << title << " Ð´Ð¾Ð±Ð°Ð²Ð»ÐµÐ½Ð° Ð² Ð±Ð¸Ð±Ð»Ð¸Ð¾Ñ‚ÐµÐºÑƒ." << endl;
+        cout << "Êíèãà " << title << " äîáàâëåíà â áèáëèîòåêó." << endl;
     }
 }
 
 void Librarian::delBook() {
-    cout << "=====Ð£Ð”ÐÐ›Ð•ÐÐ˜Ð• ÐšÐÐ˜Ð“Ð˜=====" << endl;
+    cout << "=====ÓÄÀËÅÍÈÅ ÊÍÈÃÈ=====" << endl;
     string del_title;
-    cout << "Ð’Ð²ÐµÐ´Ð¸Ñ‚Ðµ Ð½Ð°Ð·Ð²Ð°Ð½Ð¸Ðµ ÐºÐ½Ð¸Ð³Ð¸, ÐºÐ¾Ñ‚Ð¾Ñ€ÑƒÑŽ Ñ…Ð¾Ñ‚Ð¸Ñ‚Ðµ ÑƒÐ´Ð°Ð»Ð¸Ñ‚ÑŒ: ";
+    cout << "Ââåäèòå íàçâàíèå êíèãè, êîòîðóþ õîòèòå óäàëèòü: ";
     getline(cin, del_title);
     ifstream file("books.txt");
     if (!file) {
-        cout << "ÐžÑˆÐ¸Ð±ÐºÐ° Ð¾Ñ‚ÐºÑ€Ñ‹Ñ‚Ð¸Ñ Ñ„Ð°Ð¹Ð»Ð° Ñ ÐºÐ½Ð¸Ð³Ð°Ð¼Ð¸.";
+        cout << "Îøèáêà îòêðûòèÿ ôàéëà ñ êíèãàìè.";
         return;
     }
     ofstream temp("temp.txt");
@@ -158,27 +158,27 @@ void Librarian::delBook() {
     if (found) {
         remove("books.txt");
         rename("temp.txt", "books.txt");
-        cout << "ÐšÐ½Ð¸Ð³Ð° " << del_title << " ÑƒÐ´Ð°Ð»ÐµÐ½Ð°." << endl;
+        cout << "Êíèãà " << del_title << " óäàëåíà." << endl;
     }
     else {
         remove("temp.txt");
-        cout << "ÐšÐ½Ð¸Ð³Ð° " << del_title << " Ð½Ðµ ÑƒÐ´Ð°Ð»ÐµÐ½Ð°." << endl;
+        cout << "Êíèãà " << del_title << " íå óäàëåíà." << endl;
     }
 }
 
 void Librarian::giveBook() {
-    cout << "=====Ð’Ð«Ð”ÐÐ§Ð ÐšÐÐ˜Ð“Ð˜=====" << endl;
+    cout << "=====ÂÛÄÀ×À ÊÍÈÃÈ=====" << endl;
     string user_FIO, book_title, date;
-    cout << "Ð’Ð²ÐµÐ´Ð¸Ñ‚Ðµ Ð¤Ð˜Ðž: ";
+    cout << "Ââåäèòå ÔÈÎ: ";
     getline(cin, user_FIO);
-    cout << "Ð’Ð²ÐµÐ´Ð¸Ñ‚Ðµ Ð½Ð°Ð·Ð²Ð°Ð½Ð¸Ðµ ÐºÐ½Ð¸Ð³Ð¸: ";
+    cout << "Ââåäèòå íàçâàíèå êíèãè: ";
     getline(cin, book_title);
-    cout << "Ð’Ð²ÐµÐ´Ð¸Ñ‚Ðµ Ð´Ð°Ñ‚Ñƒ Ð²Ñ‹Ð´Ð°Ñ‡Ð¸: ";
+    cout << "Ââåäèòå äàòó âûäà÷è: ";
     getline(cin, date);
 
     ifstream file("books.txt");
     if (!file) {
-        cout << "ÐžÑˆÐ¸Ð±ÐºÐ° Ð¾Ñ‚ÐºÑ€Ñ‹Ñ‚Ð¸Ñ Ñ„Ð°Ð¹Ð»Ð°.";
+        cout << "Îøèáêà îòêðûòèÿ ôàéëà.";
         return;
     }
     ofstream temp("temp.txt");
@@ -203,49 +203,49 @@ void Librarian::giveBook() {
     if (found) {
         remove("books.txt");
         rename("temp.txt", "books.txt");
-        cout << "ÐšÐ½Ð¸Ð³Ð° " << book_title << " Ð²Ñ‹Ð´Ð°Ð½Ð°." << endl;
+        cout << "Êíèãà " << book_title << " âûäàíà." << endl;
 
          int userID;
-        cout << "Ð’Ð²ÐµÐ´Ð¸Ñ‚Ðµ ID Ð¿Ð¾Ð»ÑŒÐ·Ð¾Ð²Ð°Ñ‚ÐµÐ»Ñ: ";
+        cout << "Ââåäèòå ID ïîëüçîâàòåëÿ: ";
         cin >> userID;
         cin.ignore();
         
         ofstream book_file("books_to_users.txt", ios::app);
         book_file << "ID: " << userID << endl;                   
-        book_file << "Ð’Ñ‹Ð´Ð°Ð½Ð°(ÐºÐ¾Ð¼Ñƒ): " << user_FIO << endl;
-        book_file << "ÐšÐ½Ð¸Ð³Ð°: " << book_title << endl;
-        book_file << "Ð”Ð°Ñ‚Ð° Ð²Ñ‹Ð´Ð°Ñ‡Ð¸: " << date << endl;
+        book_file << "Âûäàíà(êîìó): " << user_FIO << endl;
+        book_file << "Êíèãà: " << book_title << endl;
+        book_file << "Äàòà âûäà÷è: " << date << endl;
         book_file << "--------------------------" << endl;
         book_file.close();
-        cout << "Ð—Ð°Ð¿Ð¸ÑÑŒ Ð´Ð¾Ð±Ð°Ð²Ð»ÐµÐ½Ð° Ð² Ð°Ñ€Ñ…Ð¸Ð².";
+        cout << "Çàïèñü äîáàâëåíà â àðõèâ.";
     }
     else {
         remove("temp.txt");
-        cout << "ÐšÐ½Ð¸Ð³Ð° " << book_title << " Ð½Ðµ Ð²Ñ‹Ð´Ð°Ð½Ð°." << endl;
+        cout << "Êíèãà " << book_title << " íå âûäàíà." << endl;
     }
 }
 void Librarian::takeBook() {
-    cout << "=====Ð’ÐžÐ—Ð’Ð ÐÐ©Ð•ÐÐ˜Ð• ÐšÐÐ˜Ð“Ð˜=====" << endl;
+    cout << "=====ÂÎÇÂÐÀÙÅÍÈÅ ÊÍÈÃÈ=====" << endl;
     string author, title, edition, annatation, year;
-    cout << "Ð’Ð²ÐµÐ´Ð¸Ñ‚Ðµ Ð½Ð°Ð·Ð²Ð°Ð½Ð¸Ðµ ÐºÐ½Ð¸Ð³Ð¸:";
+    cout << "Ââåäèòå íàçâàíèå êíèãè:";
     getline(cin, title);
-    cout << "Ð’Ð²ÐµÐ´Ð¸Ñ‚Ðµ Ð°Ð²Ñ‚Ð¾Ñ€Ð° ÐºÐ½Ð¸Ð³Ð¸: ";
+    cout << "Ââåäèòå àâòîðà êíèãè: ";
     getline(cin, author);
-    cout << "Ð’Ð²ÐµÐ´Ð¸Ñ‚Ðµ Ð³Ð¾Ð´ Ð¸Ð·Ð´Ð°Ð½Ð¸Ñ: ";
+    cout << "Ââåäèòå ãîä èçäàíèÿ: ";
     getline(cin, year);
-    cout << "Ð’Ð²ÐµÐ»Ð¸Ñ‚Ðµ Ð½Ð°Ð·Ð²Ð°Ð½Ð¸Ðµ Ð¸Ð·Ð´Ð°Ð½Ð¸Ñ: ";
+    cout << "Ââåëèòå íàçâàíèå èçäàíèÿ: ";
     getline(cin, edition);
-    cout << "Ð’Ð²ÐµÐ´Ð¸Ñ‚Ðµ Ð°Ð½Ð¾Ñ‚Ð°Ñ†Ð¸ÑŽ Ðº ÐºÐ½Ð¸Ð³Ðµ: ";
+    cout << "Ââåäèòå àíîòàöèþ ê êíèãå: ";
     getline(cin, annatation);
 
     int userID;
-    cout << "Ð’Ð²ÐµÐ´Ð¸Ñ‚Ðµ ID Ð¿Ð¾Ð»ÑŒÐ·Ð¾Ð²Ð°Ñ‚ÐµÐ»Ñ: ";
+    cout << "Ââåäèòå ID ïîëüçîâàòåëÿ: ";
     cin >> userID;
     cin.ignore();
 
     ifstream file("books_to_users.txt");
     if (!file) {
-        cout << "ÐžÑˆÐ¸Ð±ÐºÐ° Ð¾Ñ‚ÐºÑ€Ñ‹Ñ‚Ð¸Ñ Ñ„Ð°Ð¹Ð»Ð°." << endl;
+        cout << "Îøèáêà îòêðûòèÿ ôàéëà." << endl;
         return;
     }
 
@@ -264,7 +264,7 @@ void Librarian::takeBook() {
             if (getline(file, fio_line)) {
                 string book_line;
                 if (getline(file, book_line)) {
-                    if (book_line == "ÐšÐ½Ð¸Ð³Ð°: " + title) {
+                    if (book_line == "Êíèãà: " + title) {
                         found = true;
                         skip = 2;
                         continue;
@@ -286,7 +286,7 @@ void Librarian::takeBook() {
     if (found) {
         remove("books_to_users.txt");
         rename("temp.txt", "books_to_users.txt");
-        cout << "Ð—Ð°Ð¿Ð¸ÑÑŒ Ð¾ Ð²Ñ‹Ð´Ð°Ñ‡Ðµ ÐºÐ½Ð¸Ð³Ð¸ ÑƒÐ´Ð°Ð»ÐµÐ½Ð° Ð¸Ð· Ð°Ñ€Ñ…Ð¸Ð²Ð°." << endl;
+        cout << "Çàïèñü î âûäà÷å êíèãè óäàëåíà èç àðõèâà." << endl;
 
         ofstream books_file("books.txt", ios::app);
         if (books_file.is_open()) {
@@ -297,30 +297,30 @@ void Librarian::takeBook() {
             books_file << annatation << endl;
             books_file << "---------------------" << endl;
             books_file.close();
-            cout << "ÐšÐ½Ð¸Ð³Ð° '" << title << "' Ð²Ð¾Ð·Ð²Ñ€Ð°Ñ‰ÐµÐ½Ð° Ð² Ð±Ð¸Ð±Ð»Ð¸Ð¾Ñ‚ÐµÐºÑƒ." << endl;
+            cout << "Êíèãà '" << title << "' âîçâðàùåíà â áèáëèîòåêó." << endl;
         }
         else {
-            cout << "ÐžÑˆÐ¸Ð±ÐºÐ° Ð¿Ñ€Ð¸ Ð·Ð°Ð¿Ð¸ÑÐ¸ Ð² Ñ„Ð°Ð¹Ð»." << endl;
+            cout << "Îøèáêà ïðè çàïèñè â ôàéë." << endl;
         }
     }
     else {
         remove("temp.txt");
-        cout << "ÐšÐ½Ð¸Ð³Ð° " << title << " Ð½Ðµ Ð½Ð°Ð¹Ð´ÐµÐ½Ð° Ñƒ Ð¿Ð¾Ð»ÑŒÐ·Ð¾Ð²Ð°Ñ‚ÐµÐ»Ñ " << userID << endl;
+        cout << "Êíèãà " << title << " íå íàéäåíà ó ïîëüçîâàòåëÿ " << userID << endl;
     }
 }
-//-----------------------------------------------------Ð–Ð£Ð ÐÐÐ›Ð«    
+//-----------------------------------------------------ÆÓÐÍÀËÛ    
 void Librarian::addMagazine() {
-    cout << "=====Ð”ÐžÐ‘ÐÐ’Ð›Ð•ÐÐ˜Ð• Ð–Ð£Ð ÐÐÐ›Ð=====" << endl;
+    cout << "=====ÄÎÁÀÂËÅÍÈÅ ÆÓÐÍÀËÀ=====" << endl;
     string author, title, month, annatation, year;
-    cout << "Ð’Ð²ÐµÐ´Ð¸Ñ‚Ðµ Ð½Ð°Ð·Ð²Ð°Ð½Ð¸Ðµ Ð¶ÑƒÑ€Ð½Ð°Ð»Ð°:";
+    cout << "Ââåäèòå íàçâàíèå æóðíàëà:";
     getline(cin, title);
-    cout << "Ð’Ð²ÐµÐ´Ð¸Ñ‚Ðµ Ð¤Ð˜Ðž Ð°Ð²Ñ‚Ð¾Ñ€Ð°: ";
+    cout << "Ââåäèòå ÔÈÎ àâòîðà: ";
     getline(cin, author);
-    cout << "Ð’Ð²ÐµÐ´Ð¸Ñ‚Ðµ Ð³Ð¾Ð´ Ð¸Ð·Ð´Ð°Ð½Ð¸Ñ: ";
+    cout << "Ââåäèòå ãîä èçäàíèÿ: ";
     getline(cin, year);
-    cout << "Ð’Ð²ÐµÐ´Ð¸Ñ‚Ðµ Ð¼ÐµÑÑÑ†: ";
+    cout << "Ââåäèòå ìåñÿö: ";
     getline(cin, month);
-    cout << "Ð’Ð²ÐµÐ´Ð¸Ñ‚Ðµ Ð°Ð½Ð¾Ñ‚Ð°Ñ†Ð¸ÑŽ Ðº ÐºÐ½Ð¸Ð³Ðµ: ";
+    cout << "Ââåäèòå àíîòàöèþ ê êíèãå: ";
     getline(cin, annatation);
 
     ofstream file("books.txt", ios::app);
@@ -332,18 +332,18 @@ void Librarian::addMagazine() {
         file << annatation << endl;
         file << "---------------------" << endl;
         file.close();
-        cout << "Ð–ÑƒÑ€Ð½Ð°Ð» " << title << " Ð´Ð¾Ð±Ð°Ð²Ð»ÐµÐ½ Ð² Ð±Ð¸Ð±Ð»Ð¸Ð¾Ñ‚ÐµÐºÑƒ." << endl;
+        cout << "Æóðíàë " << title << " äîáàâëåí â áèáëèîòåêó." << endl;
     }
 }
 
 void Librarian::delMagazine() {
-    cout << "=====Ð£Ð”ÐÐ›Ð•ÐÐ˜Ð• Ð–Ð£Ð ÐÐÐ›Ð=====" << endl;
+    cout << "=====ÓÄÀËÅÍÈÅ ÆÓÐÍÀËÀ=====" << endl;
     string del_title;
-    cout << "Ð’Ð²ÐµÐ´Ð¸Ñ‚Ðµ Ð½Ð°Ð·Ð²Ð°Ð½Ð¸Ðµ Ð¶ÑƒÑ€Ð½Ð°Ð»Ð°, ÐºÐ¾Ñ‚Ð¾Ñ€Ñ‹Ð¹ Ñ…Ð¾Ñ‚Ð¸Ñ‚Ðµ ÑƒÐ´Ð°Ð»Ð¸Ñ‚ÑŒ: ";
+    cout << "Ââåäèòå íàçâàíèå æóðíàëà, êîòîðûé õîòèòå óäàëèòü: ";
     getline(cin, del_title);
     ifstream file("magazines.txt");
     if (!file) {
-        cout << "ÐžÑˆÐ¸Ð±ÐºÐ° Ð¾Ñ‚ÐºÑ€Ñ‹Ñ‚Ð¸Ñ Ñ„Ð°Ð¹Ð»Ð° Ñ Ð¶ÑƒÑ€Ð½Ð°Ð»Ð°Ð¼Ð¸.";
+        cout << "Îøèáêà îòêðûòèÿ ôàéëà ñ æóðíàëàìè.";
         return;
     }
     ofstream temp("temp.txt");
@@ -368,27 +368,27 @@ void Librarian::delMagazine() {
     if (found) {
         remove("magazines.txt");
         rename("temp.txt", "magazines.txt");
-        cout << "Ð–ÑƒÑ€Ð½Ð°Ð» " << del_title << " ÑƒÐ´Ð°Ð»ÐµÐ½." << endl;
+        cout << "Æóðíàë " << del_title << " óäàëåí." << endl;
     }
     else {
         remove("temp.txt");
-        cout << "Ð–ÑƒÑ€Ð½Ð°Ð» " << del_title << " Ð½Ðµ ÑƒÐ´Ð°Ð»ÐµÐ½." << endl;
+        cout << "Æóðíàë " << del_title << " íå óäàëåí." << endl;
     }
 }
 
 void Librarian::giveMagazine() {
-    cout << "=====Ð’Ð«Ð”ÐÐ§Ð Ð–Ð£Ð ÐÐÐ›=====" << endl;
+    cout << "=====ÂÛÄÀ×À ÆÓÐÍÀË=====" << endl;
     string user_FIO, mag_title, date;
-    cout << "Ð’Ð²ÐµÐ´Ð¸Ñ‚Ðµ Ð¤Ð˜Ðž: ";
+    cout << "Ââåäèòå ÔÈÎ: ";
     getline(cin, user_FIO);
-    cout << "Ð’Ð²ÐµÐ´Ð¸Ñ‚Ðµ Ð½Ð°Ð·Ð²Ð°Ð½Ð¸Ðµ Ð¶ÑƒÑ€Ð½Ð°Ð»Ð°: ";
+    cout << "Ââåäèòå íàçâàíèå æóðíàëà: ";
     getline(cin, mag_title);
-    cout << "Ð’Ð²ÐµÐ´Ð¸Ñ‚Ðµ Ð´Ð°Ñ‚Ñƒ Ð²Ñ‹Ð´Ð°Ñ‡Ð¸: ";
+    cout << "Ââåäèòå äàòó âûäà÷è: ";
     getline(cin, date);
 
     ifstream file("magazines.txt");
     if (!file) {
-        cout << "ÐžÑˆÐ¸Ð±ÐºÐ° Ð¾Ñ‚ÐºÑ€Ñ‹Ñ‚Ð¸Ñ Ñ„Ð°Ð¹Ð»Ð° Ñ Ð¶ÑƒÑ€Ð½Ð°Ð»Ð°Ð¼Ð¸.";
+        cout << "Îøèáêà îòêðûòèÿ ôàéëà ñ æóðíàëàìè.";
         return;
     }
     ofstream temp("temp.txt");
@@ -413,49 +413,49 @@ void Librarian::giveMagazine() {
     if (found) {
         remove("magazines.txt");
         rename("temp.txt", "magazines.txt");
-        cout << "Ð–ÑƒÑ€Ð½Ð°Ð» " << mag_title << " Ð²Ñ‹Ð´Ð°Ð½." << endl;
+        cout << "Æóðíàë " << mag_title << " âûäàí." << endl;
 
          int userID;
-        cout << "Ð’Ð²ÐµÐ´Ð¸Ñ‚Ðµ ID Ð¿Ð¾Ð»ÑŒÐ·Ð¾Ð²Ð°Ñ‚ÐµÐ»Ñ: ";
+        cout << "Ââåäèòå ID ïîëüçîâàòåëÿ: ";
         cin >> userID;
         cin.ignore();
         
         ofstream book_file("magazines_to_users.txt", ios::app);
         book_file << "ID: " << userID << endl;                   
-        book_file << "Ð’Ñ‹Ð´Ð°Ð½(ÐºÐ¾Ð¼Ñƒ): " << user_FIO << endl;
-        book_file << "Ð–ÑƒÑ€Ð½Ð°Ð»: " << mag_title << endl;
-        book_file << "Ð”Ð°Ñ‚Ð° Ð²Ñ‹Ð´Ð°Ñ‡Ð¸: " << date << endl;
+        book_file << "Âûäàí(êîìó): " << user_FIO << endl;
+        book_file << "Æóðíàë: " << mag_title << endl;
+        book_file << "Äàòà âûäà÷è: " << date << endl;
         book_file << "--------------------------" << endl;
         book_file.close();
-        cout << "Ð—Ð°Ð¿Ð¸ÑÑŒ Ð´Ð¾Ð±Ð°Ð²Ð»ÐµÐ½Ð° Ð² Ð°Ñ€Ñ…Ð¸Ð².";
+        cout << "Çàïèñü äîáàâëåíà â àðõèâ.";
     }
     else {
         remove("temp.txt");
-        cout << "Ð–ÑƒÑ€Ð½Ð°Ð» " << mag_title << " Ð½Ðµ Ð²Ñ‹Ð´Ð°Ð½." << endl;
+        cout << "Æóðíàë " << mag_title << " íå âûäàí." << endl;
     }
 }
 void Librarian::takeMagazine() {
-    cout << "=====Ð’ÐžÐ—Ð’Ð ÐÐ©Ð•ÐÐ˜Ð• Ð–Ð£Ð ÐÐÐ›Ð=====" << endl;
+    cout << "=====ÂÎÇÂÐÀÙÅÍÈÅ ÆÓÐÍÀËÀ=====" << endl;
     string author, title, month, annatation, year;
-    cout << "Ð’Ð²ÐµÐ´Ð¸Ñ‚Ðµ Ð½Ð°Ð·Ð²Ð°Ð½Ð¸Ðµ Ð¶ÑƒÑ€Ð½Ð°Ð»Ð°:";
+    cout << "Ââåäèòå íàçâàíèå æóðíàëà:";
     getline(cin, title);
-    cout << "Ð’Ð²ÐµÐ´Ð¸Ñ‚Ðµ Ð°Ð²Ñ‚Ð¾Ñ€Ð° Ð¶ÑƒÑ€Ð½Ð°Ð»Ð°: ";
+    cout << "Ââåäèòå àâòîðà æóðíàëà: ";
     getline(cin, author);
-    cout << "Ð’Ð²ÐµÐ´Ð¸Ñ‚Ðµ Ð³Ð¾Ð´ Ð¸Ð·Ð´Ð°Ð½Ð¸Ñ: ";
+    cout << "Ââåäèòå ãîä èçäàíèÿ: ";
     getline(cin, year);
-    cout << "Ð’Ð²ÐµÐ´Ð¸Ñ‚Ðµ Ð¼ÐµÑÑÑ†: ";
+    cout << "Ââåäèòå ìåñÿö: ";
     getline(cin, month);
-    cout << "Ð’Ð²ÐµÐ´Ð¸Ñ‚Ðµ Ð°Ð½Ð¾Ñ‚Ð°Ñ†Ð¸ÑŽ Ðº Ð¶ÑƒÑ€Ð½Ð°Ð»Ñƒ: ";
+    cout << "Ââåäèòå àíîòàöèþ ê æóðíàëó: ";
     getline(cin, annatation);
 
     int userID;
-    cout << "Ð’Ð²ÐµÐ´Ð¸Ñ‚Ðµ ID Ð¿Ð¾Ð»ÑŒÐ·Ð¾Ð²Ð°Ñ‚ÐµÐ»Ñ: ";
+    cout << "Ââåäèòå ID ïîëüçîâàòåëÿ: ";
     cin >> userID;
     cin.ignore();
 
     ifstream file("magazines_to_users.txt");
     if (!file) {
-        cout << "ÐžÑˆÐ¸Ð±ÐºÐ° Ð¾Ñ‚ÐºÑ€Ñ‹Ñ‚Ð¸Ñ Ñ„Ð°Ð¹Ð»Ð° Ð´Ð»Ñ Ð·Ð°Ð¿Ð¸ÑÐ¸ Ð²Ñ‹Ð´Ð°Ñ‡Ð¸." << endl;
+        cout << "Îøèáêà îòêðûòèÿ ôàéëà äëÿ çàïèñè âûäà÷è." << endl;
         return;
     }
 
@@ -474,7 +474,7 @@ void Librarian::takeMagazine() {
             if (getline(file, fio_line)) {
                 string mag_line;
                 if (getline(file, mag_line)) {
-                    if (mag_line == "Ð–ÑƒÑ€Ð½Ð°Ð»: " + title) {
+                    if (mag_line == "Æóðíàë: " + title) {
                         found = true;
                         skip = 2;
                         continue;
@@ -496,7 +496,7 @@ void Librarian::takeMagazine() {
     if (found) {
         remove("magazines_to_users.txt");
         rename("temp.txt", "magazines_to_users.txt");
-        cout << "Ð—Ð°Ð¿Ð¸ÑÑŒ Ð¾ Ð²Ñ‹Ð´Ð°Ñ‡Ðµ Ð¶ÑƒÑ€Ð½Ð°Ð»Ð° ÑƒÐ´Ð°Ð»ÐµÐ½Ð° Ð¸Ð· Ð°Ñ€Ñ…Ð¸Ð²Ð°." << endl;
+        cout << "Çàïèñü î âûäà÷å æóðíàëà óäàëåíà èç àðõèâà." << endl;
 
         ofstream mag_file("magazines.txt", ios::app);
         if (mag_file.is_open()) {
@@ -507,15 +507,15 @@ void Librarian::takeMagazine() {
             mag_file << annatation << endl;
             mag_file << "---------------------" << endl;
             mag_file.close();
-            cout << "Ð–ÑƒÑ€Ð½Ð°Ð» " << title << " Ð²Ð¾Ð·Ð²Ñ€Ð°Ñ‰ÐµÐ½ Ð² Ð±Ð¸Ð±Ð»Ð¸Ð¾Ñ‚ÐµÐºÑƒ." << endl;
+            cout << "Æóðíàë " << title << " âîçâðàùåí â áèáëèîòåêó." << endl;
         }
         else {
-            cout << "ÐžÑˆÐ¸Ð±ÐºÐ° Ð¿Ñ€Ð¸ Ð·Ð°Ð¿Ð¸ÑÐ¸ Ð² Ñ„Ð°Ð¹Ð»." << endl;
+            cout << "Îøèáêà ïðè çàïèñè â ôàéë." << endl;
         }
     }
     else {
         remove("temp.txt");
-        cout << "Ð–ÑƒÑ€Ð½Ð°Ð» " << title << " Ð½Ðµ Ð½Ð°Ð¹Ð´ÐµÐ½ Ñƒ Ð¿Ð¾Ð»ÑŒÐ·Ð¾Ð²Ð°Ñ‚ÐµÐ»Ñ " << userID << endl;
+        cout << "Æóðíàë " << title << " íå íàéäåí ó ïîëüçîâàòåëÿ " << userID << endl;
     }
 }
 
