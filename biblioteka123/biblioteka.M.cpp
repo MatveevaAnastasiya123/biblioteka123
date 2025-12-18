@@ -120,7 +120,7 @@ void Librarian::addBook() {
         file << year << endl;
         file << edition << endl;
         file << annatation << endl;
-        file << "---------------------" << endl;
+        file << "---------------------" << endl << endl;
         file.close();
         cout << "Книга " << title << " добавлена в библиотеку." << endl;
     }
