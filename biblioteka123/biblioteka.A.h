@@ -3,7 +3,7 @@
 #include <windows.h>
 #include <string>
 #include <fstream>
-#include "Literature.h"
+#include "biblioteka.B.h"
 using namespace std;
 
 class Magazine : public Literature {
